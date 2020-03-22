@@ -49,14 +49,20 @@ class Wp_Covid_19_Data_Shortcode_Template
 
 	public function wp_covid_19_data_display_shortcode($atts)
 	{
+		$atts_countries = explode(',', $atts["countries"]);
+
+		$bg_color = $atts["bg_color"];
 
 		ob_start();
 
-		echo '<div class="covid-19 covid-19-horizatal">';
+		if ($bg_color) {
+
+			echo '<div class="covid-19" style="background-color:' . $bg_color . '">';
+		} else {
+			echo '<div class="covid-19 covid-19-horizatal">';
+		}
 
 		echo self::wp_covid_19_data_total();
-
-		$atts_countries = explode(',', $atts["countries"]);
 
 		foreach ($atts_countries as $atts_country) {
 
@@ -64,13 +70,13 @@ class Wp_Covid_19_Data_Shortcode_Template
 
 			if ($countries) {
 
-				echo '<div class="covid-19__global">';
+				echo '<div class="covid-19__data">';
 				echo '<span class="covid-19__title">' . $countries->country . '</span>';
-				echo '<span class="covid-19__sub-title">Cases</span>';
+				echo '<span class="covid-19__sub-title">' . __('Cases', 'wp_covid_19_data') . '</span>';
 				echo '<span class="covid-19__sub-text">' . $countries->cases . '</span>';
-				echo '<span class="covid-19__sub-title">Recovered</span>';
+				echo '<span class="covid-19__sub-title">' . __('Recovered', 'wp_covid_19_data') . '</span>';
 				echo '<span class="covid-19__sub-text">' . $countries->recovered . '</span>';
-				echo '<span class="covid-19__sub-title">Deaths</span>';
+				echo '<span class="covid-19__sub-title">' . __('Deaths', 'wp_covid_19_data') . '</span>';
 				echo '<span class="covid-19__sub-text">' . $countries->deaths . '</span>';
 				echo '</div>';
 			}
@@ -103,13 +109,13 @@ class Wp_Covid_19_Data_Shortcode_Template
 		}
 
 		if ($global_data) {
-			$output .= '<div class="covid-19__global">';
-			$output .= '<span class="covid-19__title">Global</span>';
-			$output .= '<span class="covid-19__sub-title">Cases</span>';
+			$output .= '<div class="covid-19__data">';
+			$output .= '<span class="covid-19__title">' . __('Global', 'wp_covid_19_data') . '</span>';
+			$output .= '<span class="covid-19__sub-title">' . __('Cases', 'wp_covid_19_data') . '</span>';
 			$output .= '<span class="covid-19__sub-text">' . $global_data->cases . '</span>';
-			$output .= '<span class="covid-19__sub-title">Recovered</span>';
+			$output .= '<span class="covid-19__sub-title">' . __('Recovered', 'wp_covid_19_data') . '</span>';
 			$output .= '<span class="covid-19__sub-text">' . $global_data->recovered . '</span>';
-			$output .= '<span class="covid-19__sub-title">Deaths</span>';
+			$output .= '<span class="covid-19__sub-title">' . __('Deaths', 'wp_covid_19_data') . '</span>';
 			$output .= '<span class="covid-19__sub-text">' . $global_data->deaths . '</span>';
 			$output .= '</div>';
 		}
@@ -117,8 +123,10 @@ class Wp_Covid_19_Data_Shortcode_Template
 		return $output;
 	}
 
-	public function wp_covid_19_data_global_shortcode()
+	public function wp_covid_19_data_global_shortcode($atts)
 	{
+		$bg_color = $atts["bg_color"];
+
 		$response = wp_remote_get('https://corona.lmao.ninja/countries/');
 
 		if (is_array($response)) {
@@ -126,15 +134,26 @@ class Wp_Covid_19_Data_Shortcode_Template
 			$global_datas = json_decode($global_datas);
 		}
 
+		ob_start();
+
 		echo '<table>';
 		echo '<thead>';
 		echo '<tr>';
-		echo '<th>Country</th>';
-		echo '<th>Cases</th>';
-		echo '<th>Today Cases</th>';
-		echo '<th>Deaths</th>';
-		echo '<th>Today Deaths</th>';
-		echo '<th>Recovered</th>';
+		if ($bg_color) {
+			echo '<th style="background-color:' . $bg_color . '">' . __('Country', 'wp_covid_19_data') . '</th>';
+			echo '<th style="background-color:' . $bg_color . '">' . __('Cases', 'wp_covid_19_data') . '</th>';
+			echo '<th style="background-color:' . $bg_color . '">' . __('Today Cases', 'wp_covid_19_data') . '</th>';
+			echo '<th style="background-color:' . $bg_color . '">' . __('Deaths', 'wp_covid_19_data') . '</th>';
+			echo '<th style="background-color:' . $bg_color . '">' . __('Today Deaths', 'wp_covid_19_data') . '</th>';
+			echo '<th style="background-color:' . $bg_color . '">' . __('Recovered', 'wp_covid_19_data') . '</th>';
+		} else {
+			echo '<th>' . __('Country', 'wp_covid_19_data') . '</th>';
+			echo '<th>' . __('Cases', 'wp_covid_19_data') . '</th>';
+			echo '<th>' . __('Today Cases', 'wp_covid_19_data') . '</th>';
+			echo '<th>' . __('Deaths', 'wp_covid_19_data') . '</th>';
+			echo '<th>' . __('Today Deaths', 'wp_covid_19_data') . '</th>';
+			echo '<th>' . __('Recovered', 'wp_covid_19_data') . '</th>';
+		}
 		echo '</tr>';
 		echo '</thead>';
 		echo '<tbody>';
@@ -152,6 +171,8 @@ class Wp_Covid_19_Data_Shortcode_Template
 
 		echo '</tbody>';
 		echo '</table>';
+
+		return ob_get_clean();
 	}
 }
 

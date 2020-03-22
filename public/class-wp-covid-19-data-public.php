@@ -87,6 +87,7 @@ class Wp_Covid_19_Data_Public
 		 */
 
 		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/wp-covid-19-data-public.css', array(), $this->version, 'all');
+
 	}
 
 	/**
