@@ -129,5 +129,6 @@ class Wp_Covid_19_Data_Public
 		 */
 
 		add_shortcode('display_covid_19_data', array('Wp_Covid_19_Data_Shortcode_Template', 'wp_covid_19_data_display_shortcode'));
+		add_shortcode('display_covid_19_global_data', array('Wp_Covid_19_Data_Shortcode_Template', 'wp_covid_19_data_global_shortcode'));
 	}
 }

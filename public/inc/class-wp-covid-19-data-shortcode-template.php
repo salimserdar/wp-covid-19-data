@@ -116,6 +116,43 @@ class Wp_Covid_19_Data_Shortcode_Template
 
 		return $output;
 	}
+
+	public function wp_covid_19_data_global_shortcode()
+	{
+		$response = wp_remote_get('https://corona.lmao.ninja/countries/');
+
+		if (is_array($response)) {
+			$global_datas = $response['body']; // use the content
+			$global_datas = json_decode($global_datas);
+		}
+
+		echo '<table>';
+		echo '<thead>';
+		echo '<tr>';
+		echo '<th>Country</th>';
+		echo '<th>Cases</th>';
+		echo '<th>Today Cases</th>';
+		echo '<th>Deaths</th>';
+		echo '<th>Today Deaths</th>';
+		echo '<th>Recovered</th>';
+		echo '</tr>';
+		echo '</thead>';
+		echo '<tbody>';
+
+		foreach ($global_datas as $global_data) {
+			echo '<tr>';
+			echo '<td data-column="Country">' . $global_data->country . '</td>';
+			echo '<td data-column="Cases">' . $global_data->cases . '</td>';
+			echo '<td data-column="Today Cases">' . $global_data->todayCases . '</td>';
+			echo '<td data-column="Deaths">' . $global_data->deaths . '</td>';
+			echo '<td data-column="Today Deaths">' . $global_data->todayDeaths . '</td>';
+			echo '<td data-column="Recovered">' . $global_data->recovered . '</td>';
+			echo '</tr>';
+		}
+
+		echo '</tbody>';
+		echo '</table>';
+	}
 }
 
 new Wp_Covid_19_Data_Shortcode_Template();
