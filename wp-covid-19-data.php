@@ -14,7 +14,6 @@
  *
  * @wordpress-plugin
  * Plugin Name:       WP COVID-19 DATA
- * Plugin URI:        https://github.com/salimserdar
  * Description:       This is the plugin to display COVID-19 data from around the world.
  * Version:           1.0.0
  * Author:            Salim Serdar Koksal
