@@ -134,6 +134,8 @@ class Wp_Covid_19_Data_Shortcode_Template
 			$global_datas = json_decode($global_datas);
 		}
 
+		if($global_datas) {
+
 		ob_start();
 
 		echo '<table>';
@@ -173,6 +175,10 @@ class Wp_Covid_19_Data_Shortcode_Template
 		echo '</table>';
 
 		return ob_get_clean();
+
+		} else {
+			echo __('There is no data to display. API might be busy. Please refresh the page!', 'wp_covid_19_data');
+		}
 	}
 }
 
