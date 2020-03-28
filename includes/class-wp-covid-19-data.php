@@ -173,7 +173,7 @@ class Wp_Covid_19_Data {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 		$this->loader->add_action( 'init', $plugin_public, 'wp_covid_19_data_add_shortcode' );
-
+		
 	}
 
 	/**

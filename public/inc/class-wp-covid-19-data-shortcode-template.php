@@ -51,11 +51,13 @@ class Wp_Covid_19_Data_Shortcode_Template
 	{
 		$atts_countries = explode(',', $atts["countries"]);
 
-		$bg_color = $atts["bg_color"];
+		if (isset($atts["bg_color"])) {
+			$bg_color = $atts["bg_color"];
+		}
 
 		ob_start();
 
-		if ($bg_color) {
+		if (isset($bg_color)) {
 
 			echo '<div class="covid-19" style="background-color:' . $bg_color . '">';
 		} else {
@@ -68,7 +70,7 @@ class Wp_Covid_19_Data_Shortcode_Template
 
 			$countries = self::wp_covid_19_data_pull_remote($atts_country);
 
-			if ($countries) {
+			if (isset($countries)) {
 
 				echo '<div class="covid-19__data">';
 				echo '<span class="covid-19__title">' . $countries->country . '</span>';
@@ -96,7 +98,10 @@ class Wp_Covid_19_Data_Shortcode_Template
 			$countries = json_decode($countries);
 		}
 
-		return $countries;
+		if(isset($countries)) {
+			return $countries;
+		}
+
 	}
 
 	public function wp_covid_19_data_total()
@@ -108,7 +113,8 @@ class Wp_Covid_19_Data_Shortcode_Template
 			$global_data = json_decode($global_data);
 		}
 
-		if ($global_data) {
+		if (isset($global_data)) {
+			$output = '';
 			$output .= '<div class="covid-19__data">';
 			$output .= '<span class="covid-19__title">' . __('Global', 'wp_covid_19_data') . '</span>';
 			$output .= '<span class="covid-19__sub-title">' . __('Cases', 'wp_covid_19_data') . '</span>';
@@ -118,9 +124,11 @@ class Wp_Covid_19_Data_Shortcode_Template
 			$output .= '<span class="covid-19__sub-title">' . __('Deaths', 'wp_covid_19_data') . '</span>';
 			$output .= '<span class="covid-19__sub-text">' . $global_data->deaths . '</span>';
 			$output .= '</div>';
+
+			return $output;
 		}
 
-		return $output;
+	
 	}
 
 	public function wp_covid_19_data_global_shortcode($atts)
@@ -134,52 +142,70 @@ class Wp_Covid_19_Data_Shortcode_Template
 			$global_datas = json_decode($global_datas);
 		}
 
-		if($global_datas) {
+		if (isset($global_datas)) {
 
-		ob_start();
+			ob_start();
 
-		echo '<table>';
-		echo '<thead>';
-		echo '<tr>';
-		if ($bg_color) {
-			echo '<th style="background-color:' . $bg_color . '">' . __('Country', 'wp_covid_19_data') . '</th>';
-			echo '<th style="background-color:' . $bg_color . '">' . __('Cases', 'wp_covid_19_data') . '</th>';
-			echo '<th style="background-color:' . $bg_color . '">' . __('Today Cases', 'wp_covid_19_data') . '</th>';
-			echo '<th style="background-color:' . $bg_color . '">' . __('Deaths', 'wp_covid_19_data') . '</th>';
-			echo '<th style="background-color:' . $bg_color . '">' . __('Today Deaths', 'wp_covid_19_data') . '</th>';
-			echo '<th style="background-color:' . $bg_color . '">' . __('Recovered', 'wp_covid_19_data') . '</th>';
-		} else {
-			echo '<th>' . __('Country', 'wp_covid_19_data') . '</th>';
-			echo '<th>' . __('Cases', 'wp_covid_19_data') . '</th>';
-			echo '<th>' . __('Today Cases', 'wp_covid_19_data') . '</th>';
-			echo '<th>' . __('Deaths', 'wp_covid_19_data') . '</th>';
-			echo '<th>' . __('Today Deaths', 'wp_covid_19_data') . '</th>';
-			echo '<th>' . __('Recovered', 'wp_covid_19_data') . '</th>';
-		}
-		echo '</tr>';
-		echo '</thead>';
-		echo '<tbody>';
-
-		foreach ($global_datas as $global_data) {
+			echo '<table>';
+			echo '<thead>';
 			echo '<tr>';
-			echo '<td data-column="Country">' . $global_data->country . '</td>';
-			echo '<td data-column="Cases">' . $global_data->cases . '</td>';
-			echo '<td data-column="Today Cases">' . $global_data->todayCases . '</td>';
-			echo '<td data-column="Deaths">' . $global_data->deaths . '</td>';
-			echo '<td data-column="Today Deaths">' . $global_data->todayDeaths . '</td>';
-			echo '<td data-column="Recovered">' . $global_data->recovered . '</td>';
+			if (isset($bg_color)) {
+				echo '<th style="background-color:' . $bg_color . '">' . __('Country', 'wp_covid_19_data') . '</th>';
+				echo '<th style="background-color:' . $bg_color . '">' . __('Cases', 'wp_covid_19_data') . '</th>';
+				echo '<th style="background-color:' . $bg_color . '">' . __('Today Cases', 'wp_covid_19_data') . '</th>';
+				echo '<th style="background-color:' . $bg_color . '">' . __('Deaths', 'wp_covid_19_data') . '</th>';
+				echo '<th style="background-color:' . $bg_color . '">' . __('Today Deaths', 'wp_covid_19_data') . '</th>';
+				echo '<th style="background-color:' . $bg_color . '">' . __('Recovered', 'wp_covid_19_data') . '</th>';
+			} else {
+				echo '<th>' . __('Country', 'wp_covid_19_data') . '</th>';
+				echo '<th>' . __('Cases', 'wp_covid_19_data') . '</th>';
+				echo '<th>' . __('Today Cases', 'wp_covid_19_data') . '</th>';
+				echo '<th>' . __('Deaths', 'wp_covid_19_data') . '</th>';
+				echo '<th>' . __('Today Deaths', 'wp_covid_19_data') . '</th>';
+				echo '<th>' . __('Recovered', 'wp_covid_19_data') . '</th>';
+			}
 			echo '</tr>';
-		}
+			echo '</thead>';
+			echo '<tbody>';
 
-		echo '</tbody>';
-		echo '</table>';
+			foreach ($global_datas as $global_data) {
+				echo '<tr>';
+				echo '<td data-column="Country">' . $global_data->country . '</td>';
+				echo '<td data-column="Cases">' . $global_data->cases . '</td>';
+				echo '<td data-column="Today Cases">' . $global_data->todayCases . '</td>';
+				echo '<td data-column="Deaths">' . $global_data->deaths . '</td>';
+				echo '<td data-column="Today Deaths">' . $global_data->todayDeaths . '</td>';
+				echo '<td data-column="Recovered">' . $global_data->recovered . '</td>';
+				echo '</tr>';
+			}
 
-		return ob_get_clean();
+			echo '</tbody>';
+			echo '</table>';
 
+			return ob_get_clean();
 		} else {
 			echo __('There is no data to display. API might be busy. Please refresh the page!', 'wp_covid_19_data');
 		}
 	}
-}
 
-new Wp_Covid_19_Data_Shortcode_Template();
+	/**
+	 * This is the Line Chart shortcode callback function.
+	 *
+	 * @since    1.0.0
+	 */
+
+	public function wp_covid_19_data_line_chart_shortcode($atts)
+	{
+		if (isset($atts)) {
+			$country = $atts["country"];
+		}
+
+		ob_start();
+
+		echo '<div class="wp-covid-19-canvas" data-country="' . $country . '">';
+		echo '<canvas id="' . $country . '" data-country="' . $country . '"></canvas>';
+		echo '</div>';
+
+		return ob_get_clean();
+	}
+}

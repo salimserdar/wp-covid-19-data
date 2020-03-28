@@ -39,7 +39,15 @@ class Wp_Covid_19_Data_Public
 	 * @access   private
 	 * @var      string    $version    The current version of this plugin.
 	 */
-	private $version;
+	protected $shortcodeClass;
+
+	/**
+	 * The version of this plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string    $version    The current version of this plugin.
+	 */
 
 	/**
 	 * Initialize the class and set its properties.
@@ -54,7 +62,6 @@ class Wp_Covid_19_Data_Public
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 		$this->wp_covid_19_include_display_template();
-
 	}
 
 
@@ -64,6 +71,7 @@ class Wp_Covid_19_Data_Public
 		 * Include the functions from diroctory for shortcodes registered in this class.
 		 */
 		require plugin_dir_path(__FILE__) . 'inc/class-wp-covid-19-data-shortcode-template.php';
+		$this->shortcodeClass = new Wp_Covid_19_Data_Shortcode_Template();
 	}
 
 	/**
@@ -87,7 +95,6 @@ class Wp_Covid_19_Data_Public
 		 */
 
 		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/wp-covid-19-data-public.css', array(), $this->version, 'all');
-
 	}
 
 	/**
@@ -110,9 +117,16 @@ class Wp_Covid_19_Data_Public
 		 * class.
 		 */
 
-		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/wp-covid-19-data-public.js', array('jquery'), $this->version, false);
+		wp_enqueue_script('chartjs', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js', array(), $this->version, true);
+		wp_enqueue_script('wp-covid-19-data-public', plugin_dir_url(__FILE__) . 'js/wp-covid-19-data-public.js', array('jquery', 'chartjs'), $this->version, true);
+
 	}
 
+	/**
+	 * Register the shortcodes.
+	 *
+	 * @since    1.0.0
+	 */
 
 	public function wp_covid_19_data_add_shortcode()
 	{
@@ -129,7 +143,12 @@ class Wp_Covid_19_Data_Public
 		 * class.
 		 */
 
-		add_shortcode('display_covid_19_data', array('Wp_Covid_19_Data_Shortcode_Template', 'wp_covid_19_data_display_shortcode'));
-		add_shortcode('display_covid_19_global_data', array('Wp_Covid_19_Data_Shortcode_Template', 'wp_covid_19_data_global_shortcode'));
+		// add_shortcode('display_covid_19_data', array('Wp_Covid_19_Data_Shortcode_Template', 'wp_covid_19_data_display_shortcode'));
+		// add_shortcode('display_covid_19_global_data', array('Wp_Covid_19_Data_Shortcode_Template', 'wp_covid_19_data_global_shortcode'));
+		// add_shortcode('display_covid_19_data_line_chart', array('Wp_Covid_19_Data_Shortcode_Template', 'wp_covid_19_data_line_chart_shortcode'));
+
+		add_shortcode('display_covid_19_data', array($this->shortcodeClass, 'wp_covid_19_data_display_shortcode'));
+		add_shortcode('display_covid_19_global_data', array($this->shortcodeClass, 'wp_covid_19_data_global_shortcode'));
+		add_shortcode('display_covid_19_data_line_chart', array($this->shortcodeClass, 'wp_covid_19_data_line_chart_shortcode'));
 	}
 }
