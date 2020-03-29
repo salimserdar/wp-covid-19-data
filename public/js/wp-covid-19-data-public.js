@@ -121,16 +121,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     if (canvasElems.hasOwnProperty(key)) {
       var element = canvasElems[key];
       var country = element.getAttribute("data-country");
-      getCountryHistorical(country);
+      var localLanguage = element.getAttribute("data-language");
+      getCountryHistorical(country, localLanguage);
     }
   }
 
-  function getCountryHistorical(_x) {
+  function getCountryHistorical(_x, _x2) {
     return _getCountryHistorical.apply(this, arguments);
   }
 
   function _getCountryHistorical() {
-    _getCountryHistorical = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(country) {
+    _getCountryHistorical = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(country, localLanguage) {
       var response, data;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
@@ -146,7 +147,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
             case 5:
               data = _context.sent;
-              initLineChart(data, country);
+              initLineChart(data, country, localLanguage);
               return _context.abrupt("return", data);
 
             case 8:
@@ -159,7 +160,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return _getCountryHistorical.apply(this, arguments);
   }
 
-  function initLineChart(data, country) {
+  function initLineChart(data, country, localLanguage) {
+    var translatedlb = translatedLabels(localLanguage);
     var labels = Object.keys(data.timeline.cases);
     var caseData = Object.values(data.timeline.cases);
     var caseDeaths = Object.values(data.timeline.deaths);
@@ -168,13 +170,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       data: {
         labels: labels,
         datasets: [{
-          label: "Cases",
-          borderColor: "rgb(255, 99, 132)",
+          label: translatedlb.cases,
+          borderColor: "rgb(54, 162, 235)",
           data: caseData,
           fill: false
         }, {
-          label: "Deaths",
-          borderColor: "rgb(54, 162, 235)",
+          label: translatedlb.deaths,
+          borderColor: "rgb(255, 99, 132)",
           fill: false,
           data: caseDeaths
         }]
@@ -213,6 +215,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
     var ctx = document.getElementById(country).getContext("2d");
     var myLine = new Chart(ctx, config);
+  }
+
+  function translatedLabels(localLanguage) {
+    if (localLanguage === "tr_TR") {
+      var _translatedLabels = {
+        cases: "Vaka sayısı",
+        deaths: "Ölü sayısı"
+      };
+      return _translatedLabels;
+    } else {
+      var _translatedLabels2 = {
+        cases: "Vaka sayısı",
+        deaths: "Ölü sayısı"
+      };
+      return _translatedLabels2;
+    }
   }
 })();
 

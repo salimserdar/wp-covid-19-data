@@ -1,25 +1,28 @@
 (function() {
-
+  
   const canvasElems = document.getElementsByClassName("wp-covid-19-canvas");
 
   for (const key in canvasElems) {
     if (canvasElems.hasOwnProperty(key)) {
       const element = canvasElems[key];
-      let country= element.getAttribute("data-country");
-      getCountryHistorical(country);
+      let country = element.getAttribute("data-country");
+      let localLanguage = element.getAttribute("data-language");
+      getCountryHistorical(country, localLanguage);
     }
   }
 
-  async function getCountryHistorical(country) {
+  async function getCountryHistorical(country, localLanguage) {
     var response = await fetch(
       "https://corona.lmao.ninja/v2/historical/" + country
     );
     var data = await response.json();
-    initLineChart(data, country);
+    initLineChart(data, country, localLanguage);
     return data;
   }
 
-  function initLineChart(data, country) {
+  function initLineChart(data, country, localLanguage) {
+    
+    const translatedlb = translatedLabels(localLanguage);
 
     const labels = Object.keys(data.timeline.cases);
 
@@ -33,14 +36,14 @@
         labels: labels,
         datasets: [
           {
-            label: "Cases",
-            borderColor: "rgb(255, 99, 132)",
+            label: translatedlb.cases,
+            borderColor: "rgb(54, 162, 235)",
             data: caseData,
             fill: false
           },
           {
-            label: "Deaths",
-            borderColor: "rgb(54, 162, 235)",
+            label: translatedlb.deaths,
+            borderColor: "rgb(255, 99, 132)",
             fill: false,
             data: caseDeaths
           }
@@ -78,11 +81,26 @@
         }
       }
     };
-  
+
     var ctx = document.getElementById(country).getContext("2d");
     var myLine = new Chart(ctx, config);
-
   }
 
+  function translatedLabels(localLanguage) {
+ 
+    if (localLanguage === "tr_TR") {
+      const translatedLabels = {
+        cases: "Vaka sayısı",
+        deaths: "Ölü sayısı"
+      };
+      return translatedLabels;
+    } else {
+      const translatedLabels = {
+        cases: "Vaka sayısı",
+        deaths: "Ölü sayısı"
+      };
+      return translatedLabels;
+    }
+  }
 
 })();

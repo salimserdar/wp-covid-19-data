@@ -219,9 +219,11 @@ class Wp_Covid_19_Data_Shortcode_Template
 			$country = $atts["country"];
 		}
 
+		$localLanguage = get_locale();
+
 		ob_start();
 
-		echo '<div class="wp-covid-19-canvas" data-country="' . $country . '">';
+		echo '<div class="wp-covid-19-canvas" data-country="' . $country . '" data-language="' . $localLanguage . '">';
 		echo '<canvas id="' . $country . '" data-country="' . $country . '"></canvas>';
 		echo '</div>';
 
