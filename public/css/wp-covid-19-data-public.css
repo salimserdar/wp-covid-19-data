@@ -1,7 +1,7 @@
 .covid-19 {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
   padding: 30px;
   min-height: 150px;
   background-color: #330033;
@@ -26,7 +26,12 @@
   .covid-19__data {
     padding: 10px;
     width: 50%;
+    margin-right: 0;
   }
+}
+
+.covid-19__data:not(:last-child) {
+  margin-right: 15px;
 }
 
 .covid-19__title {

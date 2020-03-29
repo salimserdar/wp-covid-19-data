@@ -2,7 +2,7 @@
 
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
     padding: 30px;
     min-height: 150px;
     background-color: #330033;
@@ -22,6 +22,11 @@
         @media only screen and (max-width: 768px) {
             padding: 10px;
             width: 50%;
+            margin-right: 0;
+        }
+
+        &:not(:last-child) {
+            margin-right: 15px;
         }
     }
 
