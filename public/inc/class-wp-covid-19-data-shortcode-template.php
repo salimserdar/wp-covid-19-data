@@ -49,6 +49,11 @@ class Wp_Covid_19_Data_Shortcode_Template
 
 	public function wp_covid_19_data_display_shortcode($atts)
 	{
+
+		if (!isset($atts["countries"])) {
+			return __('You have to pass countries as a parameter. For example, countries="Canada,Turkey,China"', 'wp-covid-19-data') ;
+		}
+
 		$atts_countries = explode(',', $atts["countries"]);
 
 		$global_data = 'true';

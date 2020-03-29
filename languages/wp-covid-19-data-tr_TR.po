@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2020-03-29 05:02+0000\n"
+"POT-Creation-Date: 2020-03-29 21:17+0000\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"PO-Revision-Date: 2020-03-28 22:10-0700\n"
+"PO-Revision-Date: 2020-03-29 14:25-0700\n"
 "X-Generator: Poedit 2.3\n"
 "Project-Id-Version: \n"
 "Language-Team: \n"
@@ -12,49 +12,60 @@ msgstr ""
 "Last-Translator: \n"
 "Language: tr_TR\n"
 
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:79
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:121
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:155
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:162
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:54
+msgid ""
+"You have to pass countries as a parameter. For example, countries=\"Canada,"
+"Turkey,China\""
+msgstr ""
+"Ülkeleri parametre olarak shorcode’a eklemelisiniz. Örneğin: "
+"countries=“Canada,Turkey,China”"
+
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:93
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:135
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:169
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:176
 msgid "Cases"
 msgstr "Vaka sayısı"
 
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:81
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:123
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:159
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:166
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:95
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:137
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:173
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:180
 msgid "Recovered"
 msgstr "İyileşenler"
 
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:83
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:125
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:157
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:164
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:97
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:139
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:171
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:178
 msgid "Deaths"
-msgstr "Ölü sayısı"
+msgstr "Ölü"
 
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:120
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:134
 msgid "Global"
 msgstr "Dünya"
 
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:154
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:161
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:168
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:175
 msgid "Country"
 msgstr "Ülke"
 
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:156
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:163
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:170
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:177
 msgid "Today Cases"
-msgstr "Bugünkü vaka sayısı"
+msgstr "Bugünkü vaka"
 
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:158
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:165
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:172
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:179
 msgid "Today Deaths"
-msgstr "Bugünkü ölü sayısı"
+msgstr "Bugünkü ölü"
 
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:188
-msgid "There is no data to display. API might be busy. Please refresh the page!"
-msgstr "Muhtemelen API yoğunluktan cevap veremiyor. Lütfen sayfayı yenileyin!"
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:206
+msgid ""
+"There is no data to display. API might be busy. Please refresh the page!"
+msgstr ""
+"Şuanda API cevap veremediği için verileri gösteremiyoru. Lütfen sayfayı "
+"yenileyin!"
 
 #. Name of the plugin
 msgid "WP COVID-19 DATA"
@@ -62,7 +73,7 @@ msgstr ""
 
 #. Description of the plugin
 msgid "This is the plugin to display COVID-19 data from around the world."
-msgstr ""
+msgstr "KOVİD-19 verilerini gösteren bir Wordpress eklentisidir."
 
 #. Author of the plugin
 msgid "Salim Serdar Koksal"
@@ -71,6 +82,3 @@ msgstr ""
 #. Author URI of the plugin
 msgid "https://github.com/salimserdar"
 msgstr ""
-
-msgid "Afghanistan"
-msgstr "Afganistan"

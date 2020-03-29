@@ -2,52 +2,58 @@
 msgid ""
 msgstr ""
 "Language: \n"
-"POT-Creation-Date: 2020-03-29 05:02+0000\n"
+"POT-Creation-Date: 2020-03-29 21:17+0000\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: Loco https://localise.biz/"
 
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:79
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:121
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:155
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:162
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:54
+msgid ""
+"You have to pass countries as a parameter. For example, countries=\"Canada,"
+"Turkey,China\""
+msgstr ""
+
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:93
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:135
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:169
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:176
 msgid "Cases"
 msgstr ""
 
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:81
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:123
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:159
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:166
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:95
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:137
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:173
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:180
 msgid "Recovered"
 msgstr ""
 
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:83
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:125
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:157
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:164
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:97
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:139
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:171
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:178
 msgid "Deaths"
 msgstr ""
 
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:120
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:134
 msgid "Global"
 msgstr ""
 
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:154
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:161
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:168
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:175
 msgid "Country"
 msgstr ""
 
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:156
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:163
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:170
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:177
 msgid "Today Cases"
 msgstr ""
 
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:158
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:165
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:172
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:179
 msgid "Today Deaths"
 msgstr ""
 
-#: public/inc/class-wp-covid-19-data-shortcode-template.php:188
+#: public/inc/class-wp-covid-19-data-shortcode-template.php:206
 msgid ""
 "There is no data to display. API might be busy. Please refresh the page!"
 msgstr ""
@@ -66,7 +72,4 @@ msgstr ""
 
 #. Author URI of the plugin
 msgid "https://github.com/salimserdar"
-msgstr ""
-
-msgid "Afghanistan"
 msgstr ""
