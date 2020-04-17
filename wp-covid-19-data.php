@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       WP COVID-19 DATA
  * Description:       This is the plugin to display COVID-19 data from around the world.
- * Version:           1.1.1
+ * Version:           1.1.3
  * Author:            Salim Serdar Koksal
  * Author URI:        https://github.com/salimserdar
  * License:           GPL-2.0+
@@ -34,7 +34,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'WP_COVID_19_DATA_VERSION', '1.1.1' );
+define( 'WP_COVID_19_DATA_VERSION', '1.1.3' );
 
 /**
  * The code that runs during plugin activation.
