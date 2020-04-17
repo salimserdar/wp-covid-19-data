@@ -107,7 +107,7 @@ class Wp_Covid_19_Data_Shortcode_Template
 
 	public function wp_covid_19_data_pull_remote($atts_country)
 	{
-		$response = wp_remote_get('https://corona.lmao.ninja/countries/' . $atts_country);
+		$response = wp_remote_get('https://corona.lmao.ninja/v2/countries/' . $atts_country);
 
 		if (is_array($response)) {
 			$countries = $response['body']; // use the content
@@ -121,7 +121,7 @@ class Wp_Covid_19_Data_Shortcode_Template
 
 	public function wp_covid_19_data_total()
 	{
-		$response = wp_remote_get('https://corona.lmao.ninja/all');
+		$response = wp_remote_get('https://corona.lmao.ninja/v2/all');
 
 		if (is_array($response)) {
 			$global_data = $response['body']; // use the content
@@ -150,7 +150,7 @@ class Wp_Covid_19_Data_Shortcode_Template
 			$bg_color = $atts["bg_color"];
 		}
 
-		$response = wp_remote_get('https://corona.lmao.ninja/countries/');
+		$response = wp_remote_get('https://corona.lmao.ninja/v2/countries/');
 
 		if (is_array($response)) {
 			$global_datas = $response['body']; // use the content
